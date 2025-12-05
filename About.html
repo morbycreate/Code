@@ -1,435 +1,224 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>About — Your Company</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - BBQ Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root{
-            --bg:#0f1724; /* dark navy */
-            --card:#0b1220;
-            --muted:#9aa4b2;
-            --accent:#ff6b6b;
-            --accent-2:#6b9bff;
-            --glass: rgba(255,255,255,0.04);
-            --radius:12px;
-            --maxw:1100px;
-            --gap:24px;
-            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-            color-scheme: dark;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        html,body{height:100%}
-        body{
-            margin:0;
-            background:linear-gradient(180deg,#071021 0%, #0f1724 60%);
-            color:#e6eef8;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-            line-height:1.45;
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
-
-        .container{
-            max-width:var(--maxw);
-            margin:0 auto;
-            padding:40px 20px;
+        
+        .gradient-text {
+            background: linear-gradient(to right, #fb923c, #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        /* Header / Nav */
-        header{
-            position:sticky;
-            top:0;
-            backdrop-filter: blur(6px);
-            background:linear-gradient(180deg, rgba(10,14,20,0.6), rgba(10,14,20,0.35));
-            border-bottom:1px solid rgba(255,255,255,0.03);
-            z-index:40;
-        }
-        .nav{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:16px;
-            max-width:var(--maxw);
-            margin:0 auto;
-            padding:14px 20px;
-        }
-        .logo{
-            display:flex;
-            gap:12px;
-            align-items:center;
-            font-weight:700;
-            letter-spacing:0.2px;
-            color:#fff;
-        }
-        .logo .mark{
-            width:36px;height:36px;border-radius:8px;
-            background:linear-gradient(135deg,var(--accent),var(--accent-2));
-            display:inline-block;
-            box-shadow:0 6px 18px rgba(107,155,255,0.08), inset 0 -6px 12px rgba(255,255,255,0.03);
-        }
-        nav a{
-            color:var(--muted);
-            text-decoration:none;
-            margin-left:18px;
-            font-size:14px;
-        }
-        nav a.primary{
-            color:#fff;
-            background:linear-gradient(90deg,var(--accent),var(--accent-2));
-            padding:8px 12px;border-radius:8px;font-weight:600;
-            box-shadow: 0 6px 18px rgba(107,155,255,0.06);
-        }
-
-        /* Hero */
-        .hero{
-            display:grid;
-            grid-template-columns:1fr;
-            gap:24px;
-            align-items:center;
-            padding:56px 20px 36px;
-            text-align:center;
-        }
-        .hero-inner{
-            background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-            border-radius:var(--radius);
-            padding:36px;
-            box-shadow: 0 10px 40px rgba(2,6,23,0.6);
-            border:1px solid rgba(255,255,255,0.03);
-        }
-        .kicker{color:var(--accent); font-weight:700; font-size:13px; letter-spacing:0.9px; text-transform:uppercase;}
-        h1{margin:10px 0 8px; font-size:32px;}
-        p.lead{color:var(--muted); margin:0 0 20px; max-width:770px; margin-left:auto;margin-right:auto;}
-
-        .hero-visual{
-            margin-top:18px;
-            display:flex;
-            justify-content:center;
-        }
-        .visual-card{
-            width:100%;
-            max-width:760px;
-            height:220px;
-            border-radius:12px;
-            background:linear-gradient(135deg, rgba(107,155,255,0.08), rgba(255,107,107,0.04));
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:rgba(255,255,255,0.12);
-            font-weight:700;
-            font-size:48px;
-            border:1px solid rgba(255,255,255,0.03);
-        }
-
-        /* Stats row */
-        .stats{
-            display:flex;
-            gap:18px;
-            margin-top:28px;
-            justify-content:center;
-            flex-wrap:wrap;
-        }
-        .stat{
-            background:var(--glass);
-            padding:12px 16px;
-            border-radius:10px;
-            min-width:120px;
-            text-align:center;
-            border:1px solid rgba(255,255,255,0.02);
-        }
-        .stat .num{font-weight:700; font-size:18px; color:#fff;}
-        .stat .label{font-size:13px; color:var(--muted); margin-top:4px;}
-
-        /* Sections */
-        section{padding:44px 0;}
-        .grid{
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:var(--gap);
-            align-items:stretch;
-        }
-        .card{
-            background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-            padding:22px;
-            border-radius:12px;
-            border:1px solid rgba(255,255,255,0.03);
-            box-shadow: 0 6px 20px rgba(2,6,23,0.5);
-        }
-        .card h3{margin:0 0 10px;}
-        .card p{color:var(--muted); margin:0;}
-
-        /* Leadership list */
-        .people{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-            gap:16px;
-        }
-        .person{
-            display:flex;
-            gap:12px;
-            align-items:center;
-            background:rgba(255,255,255,0.02);
-            padding:12px;
-            border-radius:10px;
-            border:1px solid rgba(255,255,255,0.02);
-        }
-        .avatar{
-            width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
-            display:flex;align-items:center;justify-content:center;font-weight:700;color:#02102b;
-            flex-shrink:0;
-        }
-        .person h4{margin:0;font-size:15px;}
-        .person p{margin:4px 0 0;color:var(--muted);font-size:13px;}
-
-        /* Timeline */
-        .timeline{
-            display:flex;
-            flex-direction:column;
-            gap:12px;
-        }
-        .t-item{
-            display:flex;
-            gap:12px;
-            align-items:flex-start;
-        }
-        .t-bullet{
-            width:10px;height:10px;border-radius:50%;background:var(--accent);
-            margin-top:6px;flex-shrink:0;
-        }
-        .t-body{color:var(--muted);}
-
-        /* News */
-        .news-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-            gap:16px;
-        }
-        .news{
-            padding:16px;
-            border-radius:10px;
-            background:rgba(255,255,255,0.02);
-            border:1px solid rgba(255,255,255,0.02);
-        }
-        .news h5{margin:0 0 8px;}
-        .news p{margin:0;color:var(--muted);font-size:14px;}
-
-        .cta{
-            display:flex;
-            gap:12px;
-            align-items:center;
-            justify-content:space-between;
-            background:linear-gradient(90deg,var(--accent),var(--accent-2));
-            padding:18px;
-            border-radius:12px;
-            color:#02102b;
-            margin-top:28px;
-        }
-        .cta .left{font-weight:700;}
-        .cta a{background:rgba(255,255,255,0.9); padding:10px 14px; border-radius:10px; color:#02102b; text-decoration:none; font-weight:700;}
-
-        footer{
-            padding:32px 20px;
-            color:var(--muted);
-            border-top:1px solid rgba(255,255,255,0.02);
-            margin-top:20px;
-        }
-
-        @media(min-width:880px){
-            .hero{grid-template-columns:1fr;}
-            h1{font-size:40px;}
-            .visual-card{height:260px;}
-            .grid{grid-template-columns:1fr 1fr;}
-            .hero-inner{padding:48px;}
-        }
-
     </style>
 </head>
-<body>
-    <header>
-        <div class="nav">
-            <div class="logo" aria-label="Company logo">
-                <span class="mark" aria-hidden="true"></span>
-                <span>Your Company</span>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col cursor-pointer hover:opacity-80 transition">
+                <div class="text-2xl font-black text-white bg-gradient-to-r from-orange-600 to-red-600 px-3 py-1 rounded">BBQ<span class="text-yellow-400">TEST</span></div>
+                <div class="text-xs text-gray-600 font-bold tracking-widest">LEVEL UP YOUR GAME</div>
+            </a>
+            <div class="flex gap-8">
+                <a href="index.html" class="text-gray-600 hover:text-black transition">Home</a>
+                <a href="About.html" class="text-gray-600 hover:text-black transition font-semibold text-orange-600">About Us</a>
+                <a href="Products.html" class="text-gray-600 hover:text-black transition">Products</a>
             </div>
-            <nav aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="products.html">Products</a>
-                <a href="contact.html">Contact</a>
-                <a class="primary" href="careers.html">Careers</a>
-            </nav>
+            <button class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition">
+                Cart
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <div class="container">
-            <section class="hero" aria-labelledby="about-hero-title">
-                <div class="hero-inner">
-                    <div class="kicker">About Us</div>
-                    <h1 id="about-hero-title">We design tools people love. We build experiences that matter.</h1>
-                    <p class="lead">We are a distributed team of designers, engineers, and storytellers focused on crafting accessible, thoughtful software. Our work blends design, data, and empathy to help people create, communicate, and connect.</p>
-
-                    <div class="stats" role="list" aria-label="Company stats">
-                        <div class="stat" role="listitem">
-                            <div class="num">300+</div>
-                            <div class="label">Team members</div>
-                        </div>
-                        <div class="stat" role="listitem">
-                            <div class="num">50M+</div>
-                            <div class="label">Active users</div>
-                        </div>
-                        <div class="stat" role="listitem">
-                            <div class="num">20 yrs</div>
-                            <div class="label">Design heritage</div>
-                        </div>
-                    </div>
-
-                    <div class="hero-visual" aria-hidden="true">
-                        <div class="visual-card">Creative work</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Mission & Approach -->
-            <section aria-labelledby="mission-title">
-                <div class="grid">
-                    <div class="card">
-                        <h3 id="mission-title">Our mission</h3>
-                        <p>We empower people and teams to bring ideas to life. We focus on delightful experiences, robust tools, and reliable platforms so creators can spend less time on friction and more on impact.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Design & Technology</h3>
-                        <p>Design and engineering work hand-in-hand here. We prototype fast, test with real users, and iterate continuously. Our stack blends modern web platforms with scalable cloud infrastructure.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Leadership -->
-            <section aria-labelledby="leadership-title">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-                    <div>
-                        <h2 id="leadership-title" style="margin:0 0 6px;">Leadership</h2>
-                        <p style="margin:0;color:var(--muted)">A few of the people steering product and culture.</p>
-                    </div>
-                    <div style="color:var(--muted);font-size:14px;">See all team →</div>
-                </div>
-
-                <div class="people">
-                    <div class="person">
-                        <div class="avatar">AB</div>
-                        <div>
-                            <h4>Ana Bianchi</h4>
-                            <p>CEO — Strategy & culture</p>
-                        </div>
-                    </div>
-
-                    <div class="person">
-                        <div class="avatar">RK</div>
-                        <div>
-                            <h4>Ravi Kapoor</h4>
-                            <p>CTO — Platform & infrastructure</p>
-                        </div>
-                    </div>
-
-                    <div class="person">
-                        <div class="avatar">ML</div>
-                        <div>
-                            <h4>Mei Lin</h4>
-                            <p>Head of Design — Product experience</p>
-                        </div>
-                    </div>
-
-                    <div class="person">
-                        <div class="avatar">JS</div>
-                        <div>
-                            <h4>Jordan Smith</h4>
-                            <p>Head of Research — User insights</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Timeline / History -->
-            <section aria-labelledby="history-title">
-                <h2 id="history-title" style="margin:0 0 10px;">Our story</h2>
-                <p style="margin:0 0 20px;color:var(--muted);">From a small studio to a global product company — highlights along the way.</p>
-
-                <div class="timeline">
-                    <div class="t-item">
-                        <div class="t-bullet" aria-hidden="true"></div>
-                        <div class="t-body">
-                            <strong>2005</strong> — Company founded by a team of designers and engineers focused on web tools.
-                        </div>
-                    </div>
-
-                    <div class="t-item">
-                        <div class="t-bullet" aria-hidden="true"></div>
-                        <div class="t-body">
-                            <strong>2013</strong> — Launched our first major product used by millions worldwide.
-                        </div>
-                    </div>
-
-                    <div class="t-item">
-                        <div class="t-bullet" aria-hidden="true"></div>
-                        <div class="t-body">
-                            <strong>2020</strong> — Pivoted to cloud-first services and expanded R&D.
-                        </div>
-                    </div>
-
-                    <div class="t-item">
-                        <div class="t-bullet" aria-hidden="true"></div>
-                        <div class="t-body">
-                            <strong>2024</strong> — Grew to a distributed team across 10+ countries focused on inclusive experiences.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- News & Insights -->
-            <section aria-labelledby="news-title">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-                    <div>
-                        <h2 id="news-title" style="margin:0 0 6px;">News & insights</h2>
-                        <p style="margin:0;color:var(--muted)">Updates from the company, product launches, and thought pieces.</p>
-                    </div>
-                    <div style="color:var(--muted);font-size:14px;">Explore all →</div>
-                </div>
-
-                <div class="news-grid">
-                    <article class="news" aria-labelledby="n1">
-                        <h5 id="n1">Introducing our collaboration suite</h5>
-                        <p>Announcing a new set of tools to help distributed teams design, review, and ship together faster.</p>
-                    </article>
-
-                    <article class="news" aria-labelledby="n2">
-                        <h5 id="n2">Designing for accessibility</h5>
-                        <p>How we reworked our components and patterns to be more inclusive for all users.</p>
-                    </article>
-
-                    <article class="news" aria-labelledby="n3">
-                        <h5 id="n3">Sustainability report 2024</h5>
-                        <p>Our commitment to reduce environmental impact across our operations and supply chain.</p>
-                    </article>
-                </div>
-
-                <div class="cta" style="margin-top:18px;">
-                    <div class="left">Want to join us? We're hiring across product, engineering, and design.</div>
-                    <div><a href="careers.html">View open roles</a></div>
-                </div>
-            </section>
-
-            <footer>
-                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;">
-                    <div style="max-width:640px;">
-                        <strong>Your Company</strong>
-                        <div style="color:var(--muted);margin-top:6px;">Building thoughtful products that help teams create and grow. © Your Company</div>
-                    </div>
-                    <div style="display:flex;gap:18px;align-items:center;">
-                        <a href="#" style="color:var(--muted);text-decoration:none;">Privacy</a>
-                        <a href="#" style="color:var(--muted);text-decoration:none;">Terms</a>
-                        <a href="#" style="color:var(--muted);text-decoration:none;">Contact</a>
-                    </div>
-                </div>
-            </footer>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+                About BBQ Test
+            </h1>
+            <p class="text-xl text-orange-100 max-w-2xl mx-auto">
+                Discover the story behind your favorite BBQ destination. We're passionate about quality, flavor, and helping you become a BBQ master.
+            </p>
         </div>
-    </main>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="px-6 py-20">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-8 text-center">Our Story</h2>
+            <div class="prose prose-lg max-w-none text-gray-600">
+                <p class="mb-6 text-lg leading-relaxed">
+                    BBQ Test was born from a passion for authentic barbecue and a mission to share championship-level products with grill masters everywhere. Founded by pit masters who refused to compromise on quality, we hand-select every product in our collection.
+                </p>
+                <p class="mb-6 text-lg leading-relaxed">
+                    From competition-grade rubs crafted by award-winning pitmasters to award-winning sauces that have won hearts at cookouts nationwide, every item reflects our commitment to excellence. We believe that great BBQ starts with great products.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Today, BBQ Test serves over 50,000 grill masters who trust us to deliver the gear, sauces, and seasonings that make legendary cookouts possible.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values Section -->
+    <section class="px-6 py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-4 text-center">Our Mission & Values</h2>
+            <p class="text-gray-600 text-center mb-16 max-w-2xl mx-auto">
+                Everything we do is guided by three core values
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl border-2 border-orange-100 hover:shadow-lg transition">
+                    <div class="text-4xl mb-4">🔥</div>
+                    <h3 class="text-2xl font-bold mb-4">Quality First</h3>
+                    <p class="text-gray-600">
+                        We never compromise. Every product is rigorously tested and hand-picked by our team of pit masters. If it doesn't meet our standards, it doesn't make the cut.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border-2 border-red-100 hover:shadow-lg transition">
+                    <div class="text-4xl mb-4">🍖</div>
+                    <h3 class="text-2xl font-bold mb-4">Authentic Flavor</h3>
+                    <p class="text-gray-600">
+                        Crafted by championship pitmasters and competition winners, our sauces and rubs deliver authentic BBQ flavor that wins contests and converts skeptics.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border-2 border-amber-100 hover:shadow-lg transition">
+                    <div class="text-4xl mb-4">👥</div>
+                    <h3 class="text-2xl font-bold mb-4">Community</h3>
+                    <p class="text-gray-600">
+                        We're building a community of grill masters who share a passion for great BBQ. Your success in the pit is our success.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="px-6 py-20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-4 text-center">Why Grill Masters Trust Us</h2>
+            <p class="text-gray-600 text-center mb-16 max-w-2xl mx-auto">
+                The reasons our customers keep coming back
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-8 rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-lg transition group">
+                    <i class="fas fa-star w-8 h-8 mb-4 text-orange-600 text-2xl"></i>
+                    <h3 class="font-bold text-lg mb-2">Expert Curation</h3>
+                    <p class="text-gray-600 text-sm">Our team consists of certified pitmasters and competition judges who know BBQ inside and out.</p>
+                </div>
+                <div class="p-8 rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-lg transition group">
+                    <i class="fas fa-shipping-fast w-8 h-8 mb-4 text-orange-600 text-2xl"></i>
+                    <h3 class="font-bold text-lg mb-2">Lightning Fast Shipping</h3>
+                    <p class="text-gray-600 text-sm">Get your gear ready for your next cookout with 2-3 business day delivery.</p>
+                </div>
+                <div class="p-8 rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-lg transition group">
+                    <i class="fas fa-undo w-8 h-8 mb-4 text-orange-600 text-2xl"></i>
+                    <h3 class="font-bold text-lg mb-2">100% Satisfaction Guarantee</h3>
+                    <p class="text-gray-600 text-sm">Not happy? We'll make it right. Our 30-day return policy has zero hidden conditions.</p>
+                </div>
+                <div class="p-8 rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-lg transition group">
+                    <i class="fas fa-headset w-8 h-8 mb-4 text-orange-600 text-2xl"></i>
+                    <h3 class="font-bold text-lg mb-2">Expert Support</h3>
+                    <p class="text-gray-600 text-sm">Our pit master team is ready to help you find the perfect products for your grill.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="px-6 py-20 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold mb-2">50K+</div>
+                    <p class="text-orange-100">Happy Grillmasters</p>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">500+</div>
+                    <p class="text-orange-100">Products</p>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">4.9★</div>
+                    <p class="text-orange-100">Average Rating</p>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">10+</div>
+                    <p class="text-orange-100">Years of Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="px-6 py-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to up your BBQ game?</h2>
+            <p class="text-gray-600 mb-8 text-lg">Explore our full collection of premium BBQ products and start creating legendary cookouts.</p>
+            <a href="Products.html" class="bg-orange-600 text-white px-8 py-4 rounded-lg font-medium inline-flex items-center gap-2 hover:bg-orange-700 transition group">
+                Shop Now
+                <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="px-6 py-12 border-t border-gray-100 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex flex-col">
+                        <div class="text-lg font-black text-white bg-gradient-to-r from-orange-600 to-red-600 px-2 py-1 rounded">BBQ<span class="text-yellow-400">TEST</span></div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">Fueling legendary cookouts everywhere</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Shop</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="Products.html" class="hover:text-orange-600 transition">All Products</a></li>
+                        <li><a href="Products.html" class="hover:text-orange-600 transition">Sauces</a></li>
+                        <li><a href="Products.html" class="hover:text-orange-600 transition">Grills</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="About.html" class="hover:text-orange-600 transition">About</a></li>
+                        <li><a href="#" class="hover:text-orange-600 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-orange-600 transition">Recipes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-orange-600 transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-orange-600 transition">Shipping</a></li>
+                        <li><a href="#" class="hover:text-orange-600 transition">Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 flex justify-between items-center text-sm text-gray-600 flex-col md:flex-row gap-4">
+                <p>&copy; 2025 BBQ Test. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-orange-600 transition">Facebook</a>
+                    <a href="#" class="hover:text-orange-600 transition">Instagram</a>
+                    <a href="#" class="hover:text-orange-600 transition">TikTok</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html></section>
